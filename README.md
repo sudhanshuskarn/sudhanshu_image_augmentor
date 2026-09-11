@@ -28,6 +28,79 @@ pip install sudhanshu-image-augmentor
 
 Python 3.12 or later is required.
 
+## Using from the Terminal
+
+After installing the package, you can use Image Augmentor directly from your terminal.
+
+### Basic Usage
+
+```bash
+image-augmentor <input_directory> <output_directory> <image_list>
+```
+
+Example:
+
+```bash
+image-augmentor ./images ./augmented cat.jpg dog.jpg
+```
+
+This reads `cat.jpg` and `dog.jpg` from the `images` directory and saves the generated images in the `augmented` directory.
+
+By default, the tool generates **50 augmented images for each input image**.
+
+### Choose Output Format
+
+```bash
+image-augmentor ./images ./augmented cat.jpg --file_type png
+```
+
+Supported values include:
+
+```text
+jpg
+png
+default
+```
+
+### Resize Output Images
+
+Specify the dimensions as `width,height`:
+
+```bash
+image-augmentor ./images ./augmented cat.jpg --size 224,224
+```
+
+### Control the Number of Generated Images
+
+```bash
+image-augmentor ./images ./augmented cat.jpg --total_output_for_each 20
+```
+
+This generates 20 augmented versions of `cat.jpg`.
+
+### Combine Options
+
+```bash
+image-augmentor ./images ./augmented cat.jpg dog.jpg --file_type png --size 224,224 --total_output_for_each 20
+```
+
+### Command Options
+
+| Argument / Option | Description | Default |
+| --- | --- | --- |
+| `input_directory` | Directory containing the source images | Required |
+| `output_directory` | Directory where augmented images are saved | Required |
+| `image_list` | One or more image filenames | Required |
+| `--file_type` | Output image type (`jpg`, `png`, or `default`) | `default` |
+| `--size` | Resize output as `width,height` | `default` |
+| `--total_output_for_each` | Number of augmented images per source image | `50` |
+
+To view the CLI help:
+
+```bash
+image-augmentor --help
+```
+
 ## Why Image Augmentation?
 
 Machine learning models, particularly computer vision models, can benefit from diverse training data.
